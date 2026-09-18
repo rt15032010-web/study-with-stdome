@@ -1,0 +1,732 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AutoStuddies | Study From Class 1 to 12</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f5f7ff;
+            color: #162033;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            width: 100%;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.97);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 20px rgba(0,0,0,0.07);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #3457ff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #121c32;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #27344f;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #3457ff;
+        }
+
+        .login-btn {
+            background: #3457ff;
+            color: white !important;
+            padding: 11px 21px;
+            border-radius: 9px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 72vh;
+            padding: 70px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+
+            background:
+                radial-gradient(circle at 80% 20%, #dce5ff 0, transparent 35%),
+                radial-gradient(circle at 15% 85%, #dff8ef 0, transparent 30%),
+                linear-gradient(135deg, #f8faff, #eef3ff);
+        }
+
+        .hero-left {
+            width: 55%;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.08;
+            margin-bottom: 22px;
+            color: #10172a;
+        }
+
+        .hero h1 span {
+            color: #3457ff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #5d687a;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            display: inline-block;
+            padding: 15px 27px;
+            background: #3457ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 11px;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(52, 87, 255, 0.25);
+            transition: 0.3s;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            background: #2445e8;
+        }
+
+        /* HERO CARD */
+
+        .hero-right {
+            width: 40%;
+        }
+
+        .selection-preview {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 30px 70px rgba(40, 60, 130, 0.14);
+        }
+
+        .selection-preview h2 {
+            margin-bottom: 8px;
+        }
+
+        .selection-preview p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .preview-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .preview-box {
+            flex: 1;
+            background: #f5f7ff;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            color: #3457ff;
+        }
+
+        /* CLASS SECTION */
+
+        .classes {
+            padding: 85px 7%;
+            background: white;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading span {
+            color: #3457ff;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .section-heading h2 {
+            font-size: 42px;
+            margin: 10px 0;
+        }
+
+        .section-heading p {
+            max-width: 700px;
+            margin: auto;
+            color: #697486;
+            line-height: 1.7;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .class-card {
+            min-height: 170px;
+            background: linear-gradient(145deg, #f8faff, #eef2ff);
+            border-radius: 20px;
+            padding: 25px;
+            text-decoration: none;
+            color: #172034;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #e5e9f7;
+            transition: 0.3s;
+        }
+
+        .class-number {
+            width: 58px;
+            height: 58px;
+            background: #3457ff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .class-card h3 {
+            font-size: 22px;
+            margin-top: 20px;
+        }
+
+        .class-card p {
+            font-size: 14px;
+            color: #737d90;
+            margin-top: 7px;
+        }
+
+        .class-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(52, 87, 255, 0.18);
+            background: #3457ff;
+        }
+
+        .class-card:hover h3,
+        .class-card:hover p {
+            color: white;
+        }
+
+        .class-card:hover .class-number {
+            background: white;
+            color: #3457ff;
+        }
+
+        /* HOW IT WORKS */
+
+        .how {
+            padding: 85px 7%;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .step {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .step-number {
+            font-size: 36px;
+            color: #3457ff;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #6e7889;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+
+        .cta {
+            width: 86%;
+            margin: 40px auto 80px;
+            padding: 55px 30px;
+            background: linear-gradient(135deg, #3457ff, #6d46ff);
+            color: white;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #e8eaff;
+            margin-bottom: 25px;
+        }
+
+        .cta a {
+            display: inline-block;
+            background: white;
+            color: #3457ff;
+            text-decoration: none;
+            padding: 14px 26px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0d1323;
+            color: white;
+            padding: 45px 7% 25px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        footer h2 {
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            color: #a8b1c4;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        footer a {
+            display: block;
+            color: #aeb7ca;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #283147;
+            text-align: center;
+            color: #8992a7;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-left,
+            .hero-right {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .class-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 650px) {
+
+            .nav-links a:not(.login-btn) {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 5%;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .classes,
+            .how {
+                padding: 65px 5%;
+            }
+
+            .class-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-heading h2 {
+                font-size: 31px;
+            }
+
+            .cta {
+                width: 90%;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<nav>
+
+    <a href="#" class="logo">
+        Auto<span>Studdies</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#classes">Classes</a>
+        <a href="#how">How It Works</a>
+        <a href="login.html" class="login-btn">Login</a>
+    </div>
+
+</nav>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-left">
+
+        <h1>
+            One Place to Study From
+            <span>Class 1 to 12</span>
+        </h1>
+
+        <p>
+            Select your class, choose your subject and start studying.
+            AutoStuddies is designed to keep everything simple, organised
+            and easy to use for school students.
+        </p>
+
+        <a href="#classes" class="start-btn">
+            Select Your Class
+        </a>
+
+    </div>
+
+
+    <div class="hero-right">
+
+        <div class="selection-preview">
+
+            <h2>Choose Your Class</h2>
+
+            <p>
+                Start by selecting the class you are studying in.
+            </p>
+
+            <div class="preview-row">
+                <div class="preview-box">Class 1</div>
+                <div class="preview-box">Class 2</div>
+            </div>
+
+            <div class="preview-row">
+                <div class="preview-box">Class 6</div>
+                <div class="preview-box">Class 8</div>
+            </div>
+
+            <div class="preview-row">
+                <div class="preview-box">Class 10</div>
+                <div class="preview-box">Class 12</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="classes" id="classes">
+
+    <div class="section-heading">
+
+        <span>SELECT CLASS</span>
+
+        <h2>Which Class Are You Studying In?</h2>
+
+        <p>
+            Select your class below. Later, each class page can show
+            subjects, chapters, notes, questions, tests and other study tools.
+        </p>
+
+    </div>
+
+
+    <div class="class-grid">
+
+        <a href="class1.html" class="class-card">
+            <div class="class-number">1</div>
+            <div>
+                <h3>Class 1</h3>
+                <p>Open Class 1 subjects</p>
+            </div>
+        </a>
+
+        <a href="class2.html" class="class-card">
+            <div class="class-number">2</div>
+            <div>
+                <h3>Class 2</h3>
+                <p>Open Class 2 subjects</p>
+            </div>
+        </a>
+
+        <a href="class3.html" class="class-card">
+            <div class="class-number">3</div>
+            <div>
+                <h3>Class 3</h3>
+                <p>Open Class 3 subjects</p>
+            </div>
+        </a>
+
+        <a href="class4.html" class="class-card">
+            <div class="class-number">4</div>
+            <div>
+                <h3>Class 4</h3>
+                <p>Open Class 4 subjects</p>
+            </div>
+        </a>
+
+        <a href="class5.html" class="class-card">
+            <div class="class-number">5</div>
+            <div>
+                <h3>Class 5</h3>
+                <p>Open Class 5 subjects</p>
+            </div>
+        </a>
+
+        <a href="class6.html" class="class-card">
+            <div class="class-number">6</div>
+            <div>
+                <h3>Class 6</h3>
+                <p>Open Class 6 subjects</p>
+            </div>
+        </a>
+
+        <a href="class7.html" class="class-card">
+            <div class="class-number">7</div>
+            <div>
+                <h3>Class 7</h3>
+                <p>Open Class 7 subjects</p>
+            </div>
+        </a>
+
+        <a href="class8.html" class="class-card">
+            <div class="class-number">8</div>
+            <div>
+                <h3>Class 8</h3>
+                <p>Open Class 8 subjects</p>
+            </div>
+        </a>
+
+        <a href="class9.html" class="class-card">
+            <div class="class-number">9</div>
+            <div>
+                <h3>Class 9</h3>
+                <p>Open Class 9 subjects</p>
+            </div>
+        </a>
+
+        <a href="class10.html" class="class-card">
+            <div class="class-number">10</div>
+            <div>
+                <h3>Class 10</h3>
+                <p>Open Class 10 subjects</p>
+            </div>
+        </a>
+
+        <a href="class11.html" class="class-card">
+            <div class="class-number">11</div>
+            <div>
+                <h3>Class 11</h3>
+                <p>Open Class 11 subjects</p>
+            </div>
+        </a>
+
+        <a href="class12.html" class="class-card">
+            <div class="class-number">12</div>
+            <div>
+                <h3>Class 12</h3>
+                <p>Open Class 12 subjects</p>
+            </div>
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="how" id="how">
+
+    <div class="section-heading">
+
+        <span>SIMPLE SYSTEM</span>
+
+        <h2>How AutoStuddies Works</h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">01</div>
+
+            <h3>Select Your Class</h3>
+
+            <p>
+                Choose your current school class from Class 1 to Class 12.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">02</div>
+
+            <h3>Choose a Subject</h3>
+
+            <p>
+                After selecting the class, choose the subject you want to study.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">03</div>
+
+            <h3>Start Studying</h3>
+
+            <p>
+                Open chapters, explanations, notes, questions and practice material.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="cta">
+
+    <h2>Start Studying With AutoStuddies</h2>
+
+    <p>
+        Choose your class and continue to your subjects.
+    </p>
+
+    <a href="#classes">
+        Choose Class
+    </a>
+
+</div>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <h2>AutoStuddies</h2>
+
+            <p>
+                A simple online study platform designed for students
+                from Class 1 to Class 12.
+            </p>
+        </div>
+
+        <div>
+            <h3>Study</h3>
+
+            <a href="#classes">Select Class</a>
+            <a href="#">Subjects</a>
+            <a href="#">Chapters</a>
+            <a href="#">Practice</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 AutoStuddies. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+</html>
+```
