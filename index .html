@@ -1,1 +1,1221 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyMaster - Class 1 to 12</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --text: #172033;
+    --primary: #4f46e5;
+    --secondary: #6366f1;
+    --border: #e5e7eb;
+    --green: #16a34a;
+    --red: #dc2626;
+}
+
+body.dark {
+    --bg: #111827;
+    --card: #1f2937;
+    --text: #f9fafb;
+    --border: #374151;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav button {
+    background: transparent;
+    color: white;
+    border: none;
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+nav button:hover {
+    text-decoration: underline;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    margin: 30px 0 20px;
+    font-size: 28px;
+}
+
+/* CLASS GRID */
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+}
+
+.class-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.class-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.class-card .number {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* SUBJECTS */
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.subject-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.subject-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.subject-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.subject-card h3 {
+    margin-bottom: 8px;
+}
+
+/* CHAPTERS */
+
+.chapter-list {
+    display: grid;
+    gap: 12px;
+}
+
+.chapter {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* BUTTONS */
+
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: var(--secondary);
+}
+
+.btn.secondary {
+    background: #6b7280;
+}
+
+/* QUIZ */
+
+.quiz-box {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    margin-top: 20px;
+}
+
+.quiz-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.question {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.option {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    background: var(--card);
+}
+
+.option:hover {
+    border-color: var(--primary);
+}
+
+.option.correct {
+    background: #dcfce7;
+    border-color: var(--green);
+    color: #166534;
+}
+
+.option.wrong {
+    background: #fee2e2;
+    border-color: var(--red);
+    color: #991b1b;
+}
+
+.result {
+    text-align: center;
+    padding: 30px;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+}
+
+.stat h2 {
+    color: var(--primary);
+    font-size: 35px;
+}
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
+
+/* SEARCH */
+
+.search {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    margin: 15px 0 20px;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 60px;
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav button {
+        margin: 5px;
+    }
+
+    .chapter {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">📚 StudyMaster</div>
+
+    <nav>
+        <button onclick="showHome()">Home</button>
+        <button onclick="showDashboard()">Progress</button>
+        <button onclick="toggleDark()">🌙</button>
+    </nav>
+</header>
+
+
+<!-- HOME -->
+
+<main id="home">
+
+<section class="hero">
+    <h1>Class 1–12 Exam Preparation</h1>
+    <p>Learn • Practice • Test • Improve</p>
+</section>
+
+<div class="container">
+
+<h2 class="section-title">Choose Your Class</h2>
+
+<div class="class-grid">
+
+<script>
+for(let i=1; i<=12; i++) {
+    document.write(`
+        <div class="class-card" onclick="selectClass(${i})">
+            <div class="number">${i}</div>
+            <div>Class ${i}</div>
+        </div>
+    `);
+}
+</script>
+
+</div>
+
+</div>
+</main>
+
+
+<!-- SUBJECT PAGE -->
+
+<section id="subjectPage" class="container hidden">
+
+    <button class="btn secondary" onclick="showHome()">← Back</button>
+
+    <h2 class="section-title">
+        Class <span id="selectedClass"></span>
+    </h2>
+
+    <div id="subjects" class="subject-grid"></div>
+
+</section>
+
+
+<!-- CHAPTER PAGE -->
+
+<section id="chapterPage" class="container hidden">
+
+    <button class="btn secondary" onclick="backToSubjects()">← Subjects</button>
+
+    <h2 class="section-title">
+        <span id="selectedSubject"></span>
+    </h2>
+
+    <input
+        class="search"
+        id="chapterSearch"
+        placeholder="🔍 Search chapters..."
+        oninput="searchChapters()"
+    >
+
+    <div id="chapters" class="chapter-list"></div>
+
+</section>
+
+
+<!-- QUIZ PAGE -->
+
+<section id="quizPage" class="container hidden">
+
+    <button class="btn secondary" onclick="backToChapters()">← Chapters</button>
+
+    <div class="quiz-box">
+
+        <div class="quiz-top">
+            <span id="questionNumber"></span>
+            <span>⏱️ <span id="timer">60</span>s</span>
+        </div>
+
+        <div id="questionArea"></div>
+
+        <button class="btn" onclick="nextQuestion()" id="nextBtn">
+            Next Question →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboardPage" class="container hidden">
+
+    <h2 class="section-title">📊 My Progress</h2>
+
+    <div class="dashboard">
+
+        <div class="stat">
+            <h2 id="totalTests">0</h2>
+            <p>Tests Completed</p>
+        </div>
+
+        <div class="stat">
+            <h2 id="totalQuestions">0</h2>
+            <p>Questions Attempted</p>
+        </div>
+
+        <div class="stat">
+            <h2 id="correctAnswers">0</h2>
+            <p>Correct Answers</p>
+        </div>
+
+        <div class="stat">
+            <h2 id="accuracy">0%</h2>
+            <p>Accuracy</p>
+        </div>
+
+    </div>
+
+    <br>
+
+    <button class="btn" onclick="showHome()">Start Studying</button>
+
+</section>
+
+
+<footer>
+    <p>📚 StudyMaster — Class 1 to 12</p>
+    <p>Made for learning and exam preparation</p>
+</footer>
+
+
+<script>
+
+/* =========================
+   DATA
+========================= */
+
+const subjects = {
+
+1: ["Mathematics", "English", "Hindi", "EVS"],
+2: ["Mathematics", "English", "Hindi", "EVS"],
+3: ["Mathematics", "English", "Hindi", "EVS"],
+4: ["Mathematics", "English", "Hindi", "EVS"],
+5: ["Mathematics", "English", "Hindi", "EVS"],
+6: ["Mathematics", "Science", "Social Science", "English", "Hindi"],
+7: ["Mathematics", "Science", "Social Science", "English", "Hindi"],
+8: ["Mathematics", "Science", "Social Science", "English", "Hindi"],
+9: ["Mathematics", "Science", "Social Science", "English", "Hindi"],
+10: ["Mathematics", "Science", "Social Science", "English", "Hindi"],
+11: ["Mathematics", "Physics", "Chemistry", "English", "Computer Science"],
+12: ["Mathematics", "Physics", "Chemistry", "English", "Computer Science"]
+
+};
+
+
+const chapters = {
+
+"Mathematics": [
+    "Real Numbers",
+    "Polynomials",
+    "Linear Equations",
+    "Quadratic Equations",
+    "Arithmetic Progressions",
+    "Triangles",
+    "Coordinate Geometry",
+    "Introduction to Trigonometry",
+    "Circles",
+    "Statistics",
+    "Probability"
+],
+
+"Science": [
+    "Matter",
+    "Atoms and Molecules",
+    "Structure of Atom",
+    "Chemical Reactions",
+    "Acids, Bases and Salts",
+    "Life Processes",
+    "Control and Coordination",
+    "Light",
+    "Electricity",
+    "Magnetic Effects",
+    "Our Environment"
+],
+
+"Physics": [
+    "Units and Measurements",
+    "Motion",
+    "Laws of Motion",
+    "Work, Energy and Power",
+    "System of Particles",
+    "Gravitation",
+    "Thermodynamics",
+    "Waves",
+    "Electrostatics",
+    "Current Electricity",
+    "Magnetism",
+    "Electromagnetic Induction",
+    "Alternating Current",
+    "Ray Optics",
+    "Wave Optics"
+],
+
+"Chemistry": [
+    "Some Basic Concepts of Chemistry",
+    "Structure of Atom",
+    "Classification of Elements",
+    "Chemical Bonding",
+    "Thermodynamics",
+    "Equilibrium",
+    "Redox Reactions",
+    "Organic Chemistry",
+    "Electrochemistry",
+    "Chemical Kinetics",
+    "Coordination Compounds",
+    "Haloalkanes and Haloarenes",
+    "Alcohols, Phenols and Ethers",
+    "Aldehydes and Ketones"
+],
+
+"English": [
+    "Reading Comprehension",
+    "Grammar",
+    "Writing Skills",
+    "Literature",
+    "Poetry",
+    "Vocabulary"
+],
+
+"Hindi": [
+    "अपठित गद्यांश",
+    "व्याकरण",
+    "लेखन",
+    "काव्य",
+    "गद्य",
+    "साहित्य"
+],
+
+"Computer Science": [
+    "Python",
+    "Data Structures",
+    "Computer Networks",
+    "SQL",
+    "Database Concepts",
+    "Boolean Logic",
+    "Cyber Security"
+],
+
+"Social Science": [
+    "History",
+    "Geography",
+    "Political Science",
+    "Economics",
+    "Civics"
+],
+
+"EVS": [
+    "Family",
+    "Food",
+    "Water",
+    "Shelter",
+    "Plants",
+    "Animals",
+    "Environment"
+]
+
+};
+
+
+/* =========================
+   QUIZ DATABASE
+========================= */
+
+const quizData = {
+
+"Mathematics": [
+
+{
+q: "What is the value of 2 + 3?",
+options: ["4", "5", "6", "7"],
+answer: 1
+},
+
+{
+q: "What is the square of 5?",
+options: ["10", "15", "20", "25"],
+answer: 3
+},
+
+{
+q: "What is the value of √81?",
+options: ["7", "8", "9", "10"],
+answer: 2
+},
+
+{
+q: "If x + 5 = 10, what is x?",
+options: ["3", "4", "5", "6"],
+answer: 2
+},
+
+{
+q: "What is 12 × 12?",
+options: ["124", "144", "154", "164"],
+answer: 1
+}
+
+],
+
+"Physics": [
+
+{
+q: "What is the SI unit of force?",
+options: ["Joule", "Newton", "Watt", "Pascal"],
+answer: 1
+},
+
+{
+q: "What is the speed of light approximately?",
+options: [
+"3 × 10⁶ m/s",
+"3 × 10⁷ m/s",
+"3 × 10⁸ m/s",
+"3 × 10⁹ m/s"
+],
+answer: 2
+},
+
+{
+q: "Which quantity has both magnitude and direction?",
+options: ["Speed", "Distance", "Mass", "Velocity"],
+answer: 3
+},
+
+{
+q: "SI unit of electric current is:",
+options: ["Volt", "Ampere", "Ohm", "Coulomb"],
+answer: 1
+},
+
+{
+q: "Which device measures electric current?",
+options: ["Voltmeter", "Ammeter", "Galvanometer", "Barometer"],
+answer: 1
+}
+
+],
+
+"Chemistry": [
+
+{
+q: "What is the atomic number of hydrogen?",
+options: ["1", "2", "3", "4"],
+answer: 0
+},
+
+{
+q: "The pH of a neutral solution is:",
+options: ["0", "5", "7", "14"],
+answer: 2
+},
+
+{
+q: "Which gas is released during photosynthesis?",
+options: ["CO₂", "O₂", "N₂", "H₂"],
+answer: 1
+},
+
+{
+q: "NaCl is commonly known as:",
+options: ["Baking soda", "Common salt", "Washing soda", "Bleaching powder"],
+answer: 1
+},
+
+{
+q: "H₂O is the chemical formula of:",
+options: ["Hydrogen peroxide", "Water", "Oxygen", "Hydrogen"],
+answer: 1
+}
+
+],
+
+"English": [
+
+{
+q: "Which of these is a noun?",
+options: ["Run", "Beautiful", "School", "Quickly"],
+answer: 2
+},
+
+{
+q: "What is the opposite of 'ancient'?",
+options: ["Old", "Modern", "Past", "Historic"],
+answer: 1
+},
+
+{
+q: "Which word is a verb?",
+options: ["Running", "Beautiful", "Quickly", "Table"],
+answer: 0
+}
+
+],
+
+"Computer Science": [
+
+{
+q: "Which language is commonly used for data analysis?",
+options: ["Python", "HTML", "CSS", "XML"],
+answer: 0
+},
+
+{
+q: "What does SQL stand for?",
+options: [
+"Structured Query Language",
+"Simple Query Language",
+"System Query List",
+"Structured Question Language"
+],
+answer: 0
+},
+
+{
+q: "Which symbol starts a Python comment?",
+options: ["//", "#", "/*", "--"],
+answer: 1
+}
+
+]
+
+};
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentClass = null;
+let currentSubject = null;
+let currentQuestions = [];
+let currentQuestion = 0;
+let score = 0;
+let timer;
+let timeLeft = 60;
+
+
+/* =========================
+   PAGE FUNCTIONS
+========================= */
+
+function hideAll() {
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("subjectPage").classList.add("hidden");
+    document.getElementById("chapterPage").classList.add("hidden");
+    document.getElementById("quizPage").classList.add("hidden");
+    document.getElementById("dashboardPage").classList.add("hidden");
+}
+
+
+function showHome() {
+    clearInterval(timer);
+    hideAll();
+    document.getElementById("home").classList.remove("hidden");
+}
+
+
+function selectClass(classNumber) {
+
+    currentClass = classNumber;
+
+    hideAll();
+
+    document.getElementById("subjectPage").classList.remove("hidden");
+
+    document.getElementById("selectedClass").textContent = classNumber;
+
+    const box = document.getElementById("subjects");
+
+    box.innerHTML = "";
+
+    subjects[classNumber].forEach(subject => {
+
+        let icon = "📚";
+
+        if(subject === "Mathematics") icon = "📐";
+        if(subject === "Physics") icon = "⚡";
+        if(subject === "Chemistry") icon = "🧪";
+        if(subject === "English") icon = "📖";
+        if(subject === "Hindi") icon = "📕";
+        if(subject === "Computer Science") icon = "💻";
+        if(subject === "Science") icon = "🔬";
+        if(subject === "Social Science") icon = "🌍";
+        if(subject === "EVS") icon = "🌱";
+
+        box.innerHTML += `
+            <div class="subject-card"
+                 onclick="selectSubject('${subject}')">
+
+                <div class="subject-icon">${icon}</div>
+
+                <h3>${subject}</h3>
+
+                <p>View chapters & practice questions</p>
+
+            </div>
+        `;
+    });
+}
+
+
+function selectSubject(subject) {
+
+    currentSubject = subject;
+
+    hideAll();
+
+    document.getElementById("chapterPage").classList.remove("hidden");
+
+    document.getElementById("selectedSubject").textContent =
+        subject;
+
+    displayChapters();
+}
+
+
+function backToSubjects() {
+    selectClass(currentClass);
+}
+
+
+function backToChapters() {
+    clearInterval(timer);
+    selectSubject(currentSubject);
+}
+
+
+/* =========================
+   CHAPTERS
+========================= */
+
+function displayChapters(filter = "") {
+
+    const box = document.getElementById("chapters");
+
+    box.innerHTML = "";
+
+    let list = chapters[currentSubject] || [
+        "Chapter 1",
+        "Chapter 2",
+        "Chapter 3",
+        "Chapter 4",
+        "Chapter 5"
+    ];
+
+    list
+    .filter(ch => ch.toLowerCase().includes(filter.toLowerCase()))
+    .forEach((chapter, index) => {
+
+        box.innerHTML += `
+
+            <div class="chapter">
+
+                <div>
+                    <strong>${index + 1}. ${chapter}</strong>
+                    <p>Practice questions and revision</p>
+                </div>
+
+                <button class="btn"
+                    onclick="startQuiz('${currentSubject}')">
+                    Practice
+                </button>
+
+            </div>
+
+        `;
+    });
+}
+
+
+function searchChapters() {
+
+    const value =
+        document.getElementById("chapterSearch").value;
+
+    displayChapters(value);
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+function startQuiz(subject) {
+
+    currentSubject = subject;
+
+    let questions = quizData[subject];
+
+    if(!questions) {
+
+        questions = [
+            {
+                q: "Practice question coming soon!",
+                options: [
+                    "Option A",
+                    "Option B",
+                    "Option C",
+                    "Option D"
+                ],
+                answer: 0
+            }
+        ];
+
+    }
+
+    currentQuestions = [...questions];
+
+    currentQuestion = 0;
+    score = 0;
+
+    hideAll();
+
+    document.getElementById("quizPage").classList.remove("hidden");
+
+    loadQuestion();
+}
+
+
+function loadQuestion() {
+
+    clearInterval(timer);
+
+    timeLeft = 60;
+
+    document.getElementById("timer").textContent = timeLeft;
+
+    timer = setInterval(() => {
+
+        timeLeft--;
+
+        document.getElementById("timer").textContent =
+            timeLeft;
+
+        if(timeLeft <= 0) {
+
+            clearInterval(timer);
+
+            nextQuestion();
+        }
+
+    }, 1000);
+
+
+    const q = currentQuestions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        `Question ${currentQuestion + 1} / ${currentQuestions.length}`;
+
+    const area = document.getElementById("questionArea");
+
+    area.innerHTML = `
+        <div class="question">
+            ${q.q}
+        </div>
+
+        <div id="options"></div>
+    `;
+
+    const options = document.getElementById("options");
+
+    q.options.forEach((option, index) => {
+
+        options.innerHTML += `
+            <div class="option"
+                 onclick="selectAnswer(${index})">
+                 ${String.fromCharCode(65 + index)}. ${option}
+            </div>
+        `;
+
+    });
+
+}
+
+
+function selectAnswer(index) {
+
+    const q = currentQuestions[currentQuestion];
+
+    const options =
+        document.querySelectorAll(".option");
+
+    options.forEach((option, i) => {
+
+        option.style.pointerEvents = "none";
+
+        if(i === q.answer) {
+            option.classList.add("correct");
+        }
+
+        if(i === index && index !== q.answer) {
+            option.classList.add("wrong");
+        }
+
+    });
+
+    if(index === q.answer) {
+        score++;
+    }
+
+}
+
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if(currentQuestion >= currentQuestions.length) {
+
+        finishQuiz();
+
+    } else {
+
+        loadQuestion();
+
+    }
+
+}
+
+
+function finishQuiz() {
+
+    clearInterval(timer);
+
+    saveProgress();
+
+    const total = currentQuestions.length;
+
+    const percentage =
+        Math.round((score / total) * 100);
+
+    document.getElementById("questionArea").innerHTML = `
+
+        <div class="result">
+
+            <h2>🎉 Test Completed!</h2>
+
+            <br>
+
+            <h1>${score} / ${total}</h1>
+
+            <br>
+
+            <h2>${percentage}%</h2>
+
+            <br>
+
+            <p>
+                ${percentage >= 80
+                    ? "Excellent work! 🔥"
+                    : percentage >= 50
+                    ? "Good job! Keep practicing! 💪"
+                    : "Keep studying and try again! 📚"}
+            </p>
+
+            <br>
+
+            <button class="btn"
+                onclick="startQuiz('${currentSubject}')">
+                Try Again
+            </button>
+
+            <button class="btn secondary"
+                onclick="showHome()">
+                Home
+            </button>
+
+        </div>
+
+    `;
+
+    document.getElementById("nextBtn").style.display =
+        "none";
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function saveProgress() {
+
+    let data =
+        JSON.parse(localStorage.getItem("studyProgress")) || {
+
+            tests: 0,
+            questions: 0,
+            correct: 0
+
+        };
+
+    data.tests++;
+
+    data.questions += currentQuestions.length;
+
+    data.correct += score;
+
+    localStorage.setItem(
+        "studyProgress",
+        JSON.stringify(data)
+    );
+
+}
+
+
+function showDashboard() {
+
+    hideAll();
+
+    document.getElementById("dashboardPage")
+        .classList.remove("hidden");
+
+    let data =
+        JSON.parse(localStorage.getItem("studyProgress")) || {
+
+            tests: 0,
+            questions: 0,
+            correct: 0
+
+        };
+
+    document.getElementById("totalTests").textContent =
+        data.tests;
+
+    document.getElementById("totalQuestions").textContent =
+        data.questions;
+
+    document.getElementById("correctAnswers").textContent =
+        data.correct;
+
+    let accuracy = data.questions
+        ? Math.round((data.correct / data.questions) * 100)
+        : 0;
+
+    document.getElementById("accuracy").textContent =
+        accuracy + "%";
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDark() {
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "darkMode",
+        document.body.classList.contains("dark")
+    );
+
+}
+
+
+/* LOAD DARK MODE */
+
+if(localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+}
+
+</script>
+
+</body>
+</html>
+```
